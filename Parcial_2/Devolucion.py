@@ -6,8 +6,21 @@ class ContratoRenta:
     def __add__(self, otro_contrato):
         return self.total + otro_contrato.total
 
+    def __radd__(self, monto):
+        return monto + self.total
+
     def __sub__(self, monto_devolucion):
         return self.total - monto_devolucion.total
+
+    def __rsub__(self, monto):
+        return monto - self.total
+
+    def __del__(self):
+        print("Contrato eliminado")
+
+    def __mul__(self, otro_contrato):
+        return self.total * otro_contrato.total
+
 
 
 contrato_1 = ContratoRenta(101, 1500)
@@ -17,6 +30,23 @@ suma_totales = contrato_1 + contrato_2
 
 print(f"La suma de ambas rentas es: ${suma_totales}")
 
-total_acumulado = ContratoRenta(103, suma_totales)
-devolucion = total_acumulado - contrato_1
+devolucion = suma_totales - contrato_1
 print(f"Total después de devolver la primera renta: ${devolucion}")
+
+contrato_3 = ContratoRenta(104, 5000)
+suma_totales_2 = devolucion + contrato_3
+print(f"La suma de la devolución y la tercera renta es: ${suma_totales_2}")
+
+del contrato_1
+del contrato_2
+del contrato_3
+
+contrato_1 = ContratoRenta(1, 15)
+contrato_2 = ContratoRenta(2, 25)
+contrato_3 = ContratoRenta(3, 50)
+
+multiplicacion_1 = contrato_1 * contrato_2
+multiplicacion_2 = contrato_2 * contrato_3
+
+print(f"El resultado de la multiplicación de contrato_1 y contrato_2 es: {multiplicacion_1}")
+print(f"El resultado de la multiplicación de contrato_2 y contrato_3 es: {multiplicacion_2}")
