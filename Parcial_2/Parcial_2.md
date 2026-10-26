@@ -16,4 +16,8 @@
 - [Código: Aerolínea - Main](<Aerolinea/main.py>)
 - [Código: Sobrecarga con `__add__`](<Sobrecarga/con_add.py>)
 - [Código: Sobrecarga sin `__add__`](<Sobrecarga/sin_add.py>)
+- [Código: Devolución y Operadores](<Devolucion.py>)
+- [Código: Contratos Operadores - Clase ContratoRenta](<Contratos_Operadores/ContratoRenta.py>)
+- [Código: Contratos Operadores - Main](<Contratos_Operadores/main.py>)
+
 

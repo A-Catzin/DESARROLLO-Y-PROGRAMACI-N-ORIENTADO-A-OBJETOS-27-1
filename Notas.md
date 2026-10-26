@@ -1,6 +1,5 @@
-Analisis 
-Contruye el analisis de un sistema de reservaciones de un hotel
-identifica al menos 5 clases candidatas
-Para cada clase indicada 2 atributos y 2 responsbilidades 
-identifica al menos 3 reglas de negocio 
-Finalmente dibuja un diagrama de clases inicial
+Fases de desarrollo 
+1. Requerimientos
+2. Analisis
+3. Diseño
+4. Implementación

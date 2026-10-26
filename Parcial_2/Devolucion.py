@@ -21,6 +21,8 @@ class ContratoRenta:
     def __mul__(self, otro_contrato):
         return self.total * otro_contrato.total
 
+    def __truediv__(self, otro_contrato):
+        return self.total / otro_contrato.total
 
 
 contrato_1 = ContratoRenta(101, 1500)
@@ -50,3 +52,10 @@ multiplicacion_2 = contrato_2 * contrato_3
 
 print(f"El resultado de la multiplicación de contrato_1 y contrato_2 es: {multiplicacion_1}")
 print(f"El resultado de la multiplicación de contrato_2 y contrato_3 es: {multiplicacion_2}")
+
+division_1 = contrato_2 / contrato_1
+division_2 = contrato_3 / contrato_2
+
+print(f"El resultado de la división de contrato_2 entre contrato_1 es: {division_1}")
+print(f"El resultado de la división de contrato_3 entre contrato_2 es: {division_2}")
+         
