@@ -4,12 +4,11 @@ from Envio import Envio
 class Paquete(Envio):
     def __init__(self, codigo, peso, distancia, volumen):
         super().__init__(codigo, peso, distancia)
-        self.__volumen = volumen  # Privado (-)
+        self.__volumen = volumen
 
     def __del__(self):
         print(f"Paquete {self.codigo} eliminado")
 
-    # Encapsulamiento 2: @property
     @property
     def volumen(self):
         return self.__volumen

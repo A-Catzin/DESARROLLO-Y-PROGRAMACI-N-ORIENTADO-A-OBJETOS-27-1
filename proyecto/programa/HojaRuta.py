@@ -1,9 +1,9 @@
 class HojaRuta:
     def __init__(self, folio, zona):
-        self.folio = folio        # Público (+)
-        self.zona = zona          # Público (+)
-        self.__repartidor = None  # Privado (-)
-        self.__envios = []        # Privado (-)
+        self.folio = folio
+        self.zona = zona
+        self.__repartidor = None
+        self.__envios = []
 
     def __del__(self):
         print(f"Hoja de ruta {self.folio} eliminada")

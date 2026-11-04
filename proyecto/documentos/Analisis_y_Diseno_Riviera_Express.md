@@ -2,23 +2,23 @@
 
 ## Fase 2: Análisis
 
-### 2.1 Identificación de Objetos / Clases Candidatas
+### 2.1 Lista de Objetos Identificados en el Dominio
 
 1. **`Envio` (Superclase)**:
    - **Atributos**: `+codigo`, `-peso`, `-distancia`.
-   - **Responsabilidades**: Validar que peso y distancia no sean negativos (`get`/`set`), calcular el costo base y sobrecargar el operador `+` (`__add__`) para sumar el costo de dos envíos.
+   - **Responsabilidades**: Inicializar y destruir el objeto (`__init__`, `__del__`), validar que peso y distancia no sean negativos (`get`/`set`), calcular el costo base y sobrecargar los 4 operadores aritméticos (`+`, `-`, `*`, `/`).
 2. **`Paquete` (Subclase de `Envio`)**:
    - **Atributos propios**: `-volumen`.
-   - **Responsabilidades**: Validar que el volumen no sea negativo (`@property`) y calcular el costo sumando el volumen al costo base heredado.
+   - **Responsabilidades**: Heredar de `Envio`, validar que el volumen no sea negativo mediante `@property` y calcular el costo sumando el volumen al costo base.
 3. **`Documento` (Subclase de `Envio`)**:
    - **Atributos propios**: `+urgente`.
-   - **Responsabilidades**: Calcular el costo sumando un cargo extra si el documento es urgente.
+   - **Responsabilidades**: Heredar de `Envio` y calcular el costo sumando un cargo adicional cuando el documento es urgente.
 4. **`Repartidor`**:
    - **Atributos**: `+nombre`, `+vehiculo`, `-id_repartidor`.
-   - **Responsabilidades**: Guardar los datos del repartidor responsable y proteger su ID con `get`/`set`.
+   - **Responsabilidades**: Representar al repartidor responsable de la entrega y encapsular su identificador mediante `get`/`set`.
 5. **`HojaRuta`**:
    - **Atributos**: `+folio`, `+zona`, `-repartidor`, `-envios`.
-   - **Responsabilidades**: Agrupar varios paquetes/documentos, asignar un repartidor responsable (`@property`) y mostrar el resumen de la ruta.
+   - **Responsabilidades**: Encapsular al repartidor asignado mediante `@property`, agrupar múltiples paquetes y documentos en una lista y mostrar en pantalla los datos de la ruta.
 
 ### 2.2 Diagrama de Casos de Uso
 
@@ -30,7 +30,7 @@ flowchart LR
     subgraph Sistema["Sistema de Envíos 'Riviera Express'"]
         UC1(["Registrar Paquete o Documento"])
         UC2(["Validar Peso, Volumen y Distancia > 0"])
-        UC3(["Calcular Costo de Envío"])
+        UC3(["Calcular y Operar Costos (+, -, *, /)"])
         UC4(["Agrupar Envíos en Hoja de Ruta"])
         UC5(["Asignar Repartidor"])
         UC6(["Mostrar Resumen de Hoja de Ruta"])
@@ -68,6 +68,9 @@ classDiagram
         +set_distancia(nueva_distancia)
         +calcular_costo()
         +__add__(otro_envio)
+        +__sub__(otro_envio)
+        +__mul__(otro_envio)
+        +__truediv__(otro_envio)
     }
 
     class Paquete {

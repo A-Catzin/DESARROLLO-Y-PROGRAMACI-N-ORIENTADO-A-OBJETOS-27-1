@@ -1,8 +1,8 @@
 class Repartidor:
     def __init__(self, id_repartidor, nombre, vehiculo):
-        self.nombre = nombre                 # Público (+)
-        self.vehiculo = vehiculo             # Público (+)
-        self.__id_repartidor = id_repartidor # Privado (-)
+        self.nombre = nombre
+        self.vehiculo = vehiculo
+        self.__id_repartidor = id_repartidor
 
     def __del__(self):
         print(f"Repartidor {self.nombre} eliminado")

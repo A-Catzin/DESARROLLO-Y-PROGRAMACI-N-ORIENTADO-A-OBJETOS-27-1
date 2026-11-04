@@ -4,7 +4,7 @@ from Envio import Envio
 class Documento(Envio):
     def __init__(self, codigo, peso, distancia, urgente):
         super().__init__(codigo, peso, distancia)
-        self.urgente = urgente  # Público (+)
+        self.urgente = urgente
 
     def __del__(self):
         print(f"Documento {self.codigo} eliminado")

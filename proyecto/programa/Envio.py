@@ -1,13 +1,12 @@
 class Envio:
     def __init__(self, codigo, peso, distancia):
-        self.codigo = codigo      # Público (+)
-        self.__peso = peso        # Privado (-)
-        self.__distancia = distancia  # Privado (-)
+        self.codigo = codigo
+        self.__peso = peso
+        self.__distancia = distancia
 
     def __del__(self):
         print(f"Envío {self.codigo} eliminado")
 
-    # Encapsulamiento 1: get y set
     def get_peso(self):
         return self.__peso
 
@@ -29,6 +28,14 @@ class Envio:
     def calcular_costo(self):
         return (self.__peso * 10) + (self.__distancia * 5)
 
-    # Sobrecarga del operador '+' para sumar costos de dos envíos
     def __add__(self, otro_envio):
         return self.calcular_costo() + otro_envio.calcular_costo()
+
+    def __sub__(self, otro_envio):
+        return self.calcular_costo() - otro_envio.calcular_costo()
+
+    def __mul__(self, otro_envio):
+        return self.calcular_costo() * otro_envio.calcular_costo()
+
+    def __truediv__(self, otro_envio):
+        return self.calcular_costo() / otro_envio.calcular_costo()

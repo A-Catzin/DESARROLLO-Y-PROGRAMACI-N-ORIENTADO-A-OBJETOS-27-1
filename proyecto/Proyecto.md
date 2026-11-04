@@ -5,6 +5,8 @@
 - [Especificación de Requisitos (Funcionales y No Funcionales)](<requerimientos/Requisitos_Riviera_Express.md>)
 
 ## 2. Carpeta `documentos/`
+- [Reporte Oficial del Proyecto con Membrete TUP (PDF)](<documentos/Reporte_Proyecto_Riviera_Express.pdf>)
+- [Reporte Oficial del Proyecto con Membrete TUP (DOCX)](<documentos/Reporte_Proyecto_Riviera_Express.docx>)
 - [Análisis (Objetos y Diagrama de Casos de Uso) y Diseño (Diagrama de Clases UML)](<documentos/Analisis_y_Diseno_Riviera_Express.md>)
 - [Explicación Línea por Línea para Exposición (Markdown)](<documentos/Explicacion_Linea_Por_Linea.md>)
 - [Explicación Línea por Línea para Exposición (PDF)](<documentos/Explicacion_Linea_Por_Linea.pdf>)
