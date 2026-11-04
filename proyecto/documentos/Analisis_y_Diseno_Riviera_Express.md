@@ -5,35 +5,35 @@
 ### 2.1 Identificación de Objetos / Clases Candidatas
 
 1. **`Envio` (Superclase)**:
-   - **Atributos**: `codigo`, `peso`, `distancia`.
-   - **Responsabilidades**: Validar que peso y distancia no sean negativos (`get`/`set`), calcular el costo base por peso y distancia, y sobrecargar los operadores `+` y `-` para sumar o descontar envíos.
+   - **Atributos**: `+codigo`, `-peso`, `-distancia`.
+   - **Responsabilidades**: Validar que peso y distancia no sean negativos (`get`/`set`), calcular el costo base y sobrecargar el operador `+` (`__add__`) para sumar el costo de dos envíos.
 2. **`Paquete` (Subclase de `Envio`)**:
-   - **Atributos propios**: `volumen`.
-   - **Responsabilidades**: Validar que el volumen no sea negativo (`@property`) y calcular el costo total sumando el cargo por volumen al costo base heredado.
+   - **Atributos propios**: `-volumen`.
+   - **Responsabilidades**: Validar que el volumen no sea negativo (`@property`) y calcular el costo sumando el volumen al costo base heredado.
 3. **`Documento` (Subclase de `Envio`)**:
-   - **Atributos propios**: `urgente`.
-   - **Responsabilidades**: Gestionar el estado de urgencia (`@property`) y calcular el costo sumando una tarifa adicional si el documento es urgente.
+   - **Atributos propios**: `+urgente`.
+   - **Responsabilidades**: Calcular el costo sumando un cargo extra si el documento es urgente.
 4. **`Repartidor`**:
-   - **Atributos**: `id_repartidor`, `nombre`, `vehiculo`.
-   - **Responsabilidades**: Almacenar y validar los datos del repartidor responsable (`get`/`set`) y mostrar su ficha de identificación.
+   - **Atributos**: `+nombre`, `+vehiculo`, `-id_repartidor`.
+   - **Responsabilidades**: Guardar los datos del repartidor responsable y proteger su ID con `get`/`set`.
 5. **`HojaRuta`**:
-   - **Atributos**: `folio`, `zona`, `repartidor`, `envios`.
-   - **Responsabilidades**: Agrupar varios envíos, asignar un repartidor responsable, calcular el peso y costo total acumulado de la ruta y mostrar el resumen diario.
+   - **Atributos**: `+folio`, `+zona`, `-repartidor`, `-envios`.
+   - **Responsabilidades**: Agrupar varios paquetes/documentos, asignar un repartidor responsable (`@property`) y mostrar el resumen de la ruta.
 
 ### 2.2 Diagrama de Casos de Uso
 
 ```mermaid
 flowchart LR
-    Operador["👤 Operador Logístico"]
+    Operador["👤 Operador"]
     RepartidorActor["👤 Repartidor"]
 
-    subgraph Sistema["Sistema de Gestión de Envíos 'Riviera Express'"]
+    subgraph Sistema["Sistema de Envíos 'Riviera Express'"]
         UC1(["Registrar Paquete o Documento"])
         UC2(["Validar Peso, Volumen y Distancia > 0"])
         UC3(["Calcular Costo de Envío"])
-        UC4(["Crear Hoja de Ruta y Agrupar Envíos"])
-        UC5(["Asignar Repartidor Responsable"])
-        UC6(["Consultar Resumen y Total de Ruta"])
+        UC4(["Agrupar Envíos en Hoja de Ruta"])
+        UC5(["Asignar Repartidor"])
+        UC6(["Mostrar Resumen de Hoja de Ruta"])
     end
 
     Operador --> UC1
@@ -44,7 +44,6 @@ flowchart LR
     RepartidorActor --> UC6
 
     UC1 -. "include" .-> UC2
-    UC4 -. "include" .-> UC3
 ```
 
 ---
@@ -63,35 +62,28 @@ classDiagram
         -float distancia
         +__init__(codigo, peso, distancia)
         +__del__()
-        +get_peso() float
-        +set_peso(nuevo_peso) void
-        +get_distancia() float
-        +set_distancia(nueva_distancia) void
-        +calcular_costo(seguro) float
-        +__add__(otro_envio) float
-        +__radd__(monto_acumulado) float
-        +__sub__(otro_envio) float
-        +__rsub__(monto_acumulado) float
+        +get_peso()
+        +set_peso(nuevo_peso)
+        +get_distancia()
+        +set_distancia(nueva_distancia)
+        +calcular_costo()
+        +__add__(otro_envio)
     }
 
     class Paquete {
-        +String descripcion
         -float volumen
-        +__init__(codigo, peso, distancia, volumen, descripcion)
+        +__init__(codigo, peso, distancia, volumen)
         +__del__()
-        +volumen() float
-        +volumen(nuevo_volumen) void
-        +calcular_costo(seguro) float
+        +volumen()
+        +volumen(nuevo_volumen)
+        +calcular_costo()
     }
 
     class Documento {
-        +String tipo_sobre
-        -bool urgente
-        +__init__(codigo, peso, distancia, urgente, tipo_sobre)
+        +bool urgente
+        +__init__(codigo, peso, distancia, urgente)
         +__del__()
-        +urgente() bool
-        +urgente(es_urgente) void
-        +calcular_costo(seguro) float
+        +calcular_costo()
     }
 
     class Repartidor {
@@ -100,28 +92,25 @@ classDiagram
         -String id_repartidor
         +__init__(id_repartidor, nombre, vehiculo)
         +__del__()
-        +get_id_repartidor() String
-        +set_id_repartidor(nuevo_id) void
-        +mostrar_datos() String
+        +get_id_repartidor()
+        +set_id_repartidor(nuevo_id)
     }
 
     class HojaRuta {
         +String folio
         +String zona
         -Repartidor repartidor
-        -List~Envio~ envios
+        -List envios
         +__init__(folio, zona)
         +__del__()
-        +repartidor() Repartidor
-        +repartidor(nuevo_repartidor) void
-        +agregar_envio(envio) void
-        +calcular_total_ruta() float
-        +calcular_peso_total() float
-        +mostrar_resumen() void
+        +repartidor()
+        +repartidor(nuevo_repartidor)
+        +agregar_envio(envio)
+        +mostrar_ruta()
     }
 
-    Envio <|-- Paquete : Herencia (es un)
-    Envio <|-- Documento : Herencia (es un)
-    HojaRuta o-- "1..*" Envio : Agrupa
-    HojaRuta --> "1" Repartidor : Asigna responsable
+    Envio <|-- Paquete : Herencia
+    Envio <|-- Documento : Herencia
+    HojaRuta o-- Envio : Agrupa
+    HojaRuta --> Repartidor : Asigna
 ```

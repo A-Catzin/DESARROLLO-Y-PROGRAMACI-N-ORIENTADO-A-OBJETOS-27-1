@@ -10,6 +10,8 @@
 - [Instrucciones y Reglas del Proyecto](<proyecto/requerimientos/Instrucciones_Proyecto.md>)
 - [Requisitos Funcionales y No Funcionales](<proyecto/requerimientos/Requisitos_Riviera_Express.md>)
 - [Análisis y Diseño (Diagramas UML)](<proyecto/documentos/Analisis_y_Diseno_Riviera_Express.md>)
+- [Explicación Línea por Línea (Markdown)](<proyecto/documentos/Explicacion_Linea_Por_Linea.md>)
+- [Explicación Línea por Línea (PDF)](<proyecto/documentos/Explicacion_Linea_Por_Linea.pdf>)
 - [Programa (`main.py`)](<proyecto/programa/main.py>)
 
 ## Programas

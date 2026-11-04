@@ -1,15 +1,13 @@
 class Envio:
     def __init__(self, codigo, peso, distancia):
-        self.codigo = codigo          # Público (+)
-        self.__peso = 0.0             # Privado (-)
-        self.__distancia = 0.0        # Privado (-)
-        self.set_peso(peso)
-        self.set_distancia(distancia)
+        self.codigo = codigo      # Público (+)
+        self.__peso = peso        # Privado (-)
+        self.__distancia = distancia  # Privado (-)
 
     def __del__(self):
-        print(f"Envío {self.codigo} eliminado de memoria.")
+        print(f"Envío {self.codigo} eliminado")
 
-    # Encapsulamiento Método 1: Getters y Setters tradicionales para atributos privados
+    # Encapsulamiento 1: get y set
     def get_peso(self):
         return self.__peso
 
@@ -17,7 +15,7 @@ class Envio:
         if nuevo_peso > 0:
             self.__peso = nuevo_peso
         else:
-            print(f"[{self.codigo}] Error: El peso ({nuevo_peso} kg) no puede ser cero ni negativo.")
+            print("El peso no puede ser negativo")
 
     def get_distancia(self):
         return self.__distancia
@@ -26,22 +24,11 @@ class Envio:
         if nueva_distancia > 0:
             self.__distancia = nueva_distancia
         else:
-            print(f"[{self.codigo}] Error: La distancia ({nueva_distancia} km) no puede ser cero ni negativa.")
+            print("La distancia no puede ser negativa")
 
-    # Sobrecarga de método (parámetro opcional 'seguro')
-    def calcular_costo(self, seguro=0.0):
-        return (self.__peso * 15.0) + (self.__distancia * 8.0) + seguro
+    def calcular_costo(self):
+        return (self.__peso * 10) + (self.__distancia * 5)
 
-    # Sobrecarga de operadores: '+' para sumar el costo de dos envíos
+    # Sobrecarga del operador '+' para sumar costos de dos envíos
     def __add__(self, otro_envio):
         return self.calcular_costo() + otro_envio.calcular_costo()
-
-    def __radd__(self, monto_acumulado):
-        return monto_acumulado + self.calcular_costo()
-
-    # Sobrecarga de operadores: '-' para restar el costo de un envío devuelto/cancelado
-    def __sub__(self, otro_envio):
-        return self.calcular_costo() - otro_envio.calcular_costo()
-
-    def __rsub__(self, monto_acumulado):
-        return monto_acumulado - self.calcular_costo()

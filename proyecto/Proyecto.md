@@ -6,6 +6,8 @@
 
 ## 2. Carpeta `documentos/`
 - [Análisis (Objetos y Diagrama de Casos de Uso) y Diseño (Diagrama de Clases UML)](<documentos/Analisis_y_Diseno_Riviera_Express.md>)
+- [Explicación Línea por Línea para Exposición (Markdown)](<documentos/Explicacion_Linea_Por_Linea.md>)
+- [Explicación Línea por Línea para Exposición (PDF)](<documentos/Explicacion_Linea_Por_Linea.pdf>)
 
 ## 3. Carpeta `programa/`
 - [Clase `Envio` (Superclase, `get`/`set`, sobrecarga `+` y `-`)](<programa/Envio.py>)
