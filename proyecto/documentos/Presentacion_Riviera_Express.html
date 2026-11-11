@@ -1,0 +1,576 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+<meta charset="UTF-8">
+<title>Presentación Proyecto POO - Riviera Express</title>
+<style>
+  @page {
+    size: 16in 9in;
+    margin: 0;
+  }
+  * {
+    box-sizing: border-box;
+  }
+  body {
+    margin: 0;
+    padding: 0;
+    font-family: "Segoe UI", Roboto, Arial, sans-serif;
+    background: #0f172a;
+    color: #0f172a;
+  }
+  .slide {
+    width: 16in;
+    height: 9in;
+    padding: 0.65in 0.85in;
+    background: #f8fafc;
+    position: relative;
+    page-break-after: always;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    overflow: hidden;
+  }
+  .slide::before {
+    content: "";
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    height: 14px;
+    background: linear-gradient(90deg, #1e3a8a, #2563eb, #38bdf8);
+  }
+  .slide.cover {
+    background: linear-gradient(135deg, #0f172a 0%, #1e3a8a 60%, #1d4ed8 100%);
+    color: #ffffff;
+    justify-content: center;
+    align-items: center;
+    text-align: center;
+  }
+  .cover-badge {
+    background: rgba(56, 189, 248, 0.2);
+    border: 1.5px solid #38bdf8;
+    color: #bae6fd;
+    padding: 8px 22px;
+    border-radius: 999px;
+    font-size: 15pt;
+    font-weight: bold;
+    letter-spacing: 1.5px;
+    text-transform: uppercase;
+    margin-bottom: 18px;
+  }
+  .cover h1 {
+    font-size: 40pt;
+    margin: 0 0 10px 0;
+    line-height: 1.15;
+    color: #ffffff;
+  }
+  .cover h2 {
+    font-size: 22pt;
+    font-weight: 500;
+    color: #93c5fd;
+    margin: 0 0 32px 0;
+  }
+  .cover-grid {
+    display: grid;
+    grid-template-columns: 1.2fr 1fr;
+    gap: 28px;
+    width: 100%;
+    max-width: 1250px;
+    background: rgba(15, 23, 42, 0.55);
+    border: 1px solid rgba(147, 197, 253, 0.3);
+    border-radius: 16px;
+    padding: 26px 34px;
+    text-align: left;
+  }
+  .cover-grid h3 {
+    margin: 0 0 12px 0;
+    color: #38bdf8;
+    font-size: 15pt;
+    text-transform: uppercase;
+    letter-spacing: 1px;
+  }
+  .cover-grid ul {
+    list-style: none;
+    padding: 0;
+    margin: 0;
+    font-size: 15pt;
+    line-height: 1.75;
+  }
+  .cover-grid .mat {
+    color: #93c5fd;
+    font-weight: bold;
+  }
+  .header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    border-bottom: 2px solid #cbd5e1;
+    padding-bottom: 12px;
+    margin-bottom: 22px;
+  }
+  .header .phase {
+    font-size: 13pt;
+    font-weight: bold;
+    color: #2563eb;
+    text-transform: uppercase;
+    letter-spacing: 1px;
+  }
+  .header h2 {
+    margin: 4px 0 0 0;
+    font-size: 28pt;
+    color: #0f172a;
+  }
+  .header .num {
+    background: #1e3a8a;
+    color: #ffffff;
+    font-weight: bold;
+    font-size: 14pt;
+    padding: 8px 18px;
+    border-radius: 8px;
+  }
+  .content {
+    flex: 1;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+  }
+  .two-col {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 28px;
+    align-items: stretch;
+  }
+  .card {
+    background: #ffffff;
+    border: 1.5px solid #cbd5e1;
+    border-top: 5px solid #1e3a8a;
+    border-radius: 12px;
+    padding: 22px 26px;
+    box-shadow: 0 4px 12px rgba(15, 23, 42, 0.05);
+  }
+  .card h3 {
+    margin: 0 0 12px 0;
+    font-size: 19pt;
+    color: #1e3a8a;
+  }
+  .card p, .card li {
+    font-size: 15.5pt;
+    line-height: 1.5;
+    color: #334155;
+  }
+  .card ul {
+    margin: 0;
+    padding-left: 24px;
+  }
+  .card li {
+    margin-bottom: 8px;
+  }
+  table {
+    width: 100%;
+    border-collapse: collapse;
+    background: #ffffff;
+    border-radius: 10px;
+    overflow: hidden;
+    font-size: 14pt;
+  }
+  th, td {
+    border: 1px solid #cbd5e1;
+    padding: 11px 14px;
+    text-align: left;
+  }
+  th {
+    background: #1e3a8a;
+    color: #ffffff;
+    font-size: 14.5pt;
+  }
+  tr:nth-child(even) {
+    background: #f1f5f9;
+  }
+  pre {
+    background: #0f172a;
+    color: #f8fafc;
+    padding: 16px 20px;
+    border-radius: 10px;
+    font-family: Consolas, monospace;
+    font-size: 13.5pt;
+    line-height: 1.42;
+    margin: 0;
+    border: 1px solid #334155;
+  }
+  .hl {
+    color: #38bdf8;
+    font-weight: bold;
+  }
+  .center-img {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 100%;
+  }
+  .center-img img {
+    max-height: 6.2in;
+    max-width: 13.8in;
+    border-radius: 10px;
+    border: 1.5px solid #cbd5e1;
+    background: #ffffff;
+    padding: 8px;
+  }
+  .footer {
+    display: flex;
+    justify-content: space-between;
+    font-size: 11.5pt;
+    color: #64748b;
+    border-top: 1px solid #e2e8f0;
+    padding-top: 8px;
+    margin-top: 14px;
+  }
+</style>
+</head>
+<body>
+
+<!-- DIAPOSITIVA 1: PORTADA -->
+<div class="slide cover">
+  <div class="cover-badge">Tecnológico Universitario Playacar · 7MO Cuatrimestre</div>
+  <h1>Sistema de Gestión de Envíos<br>"Riviera Express"</h1>
+  <h2>Desarrollo y Programación Orientado a Objetos 27-1 · Caso de Estudio #8</h2>
+
+  <div class="cover-grid">
+    <div>
+      <h3>Integrantes del Equipo</h3>
+      <ul>
+        <li>• Angel Ricardo Teh Catzin — <span class="mat">Matrícula: 7433</span></li>
+        <li>• Alejandro Ramirez Perez — <span class="mat">Matrícula: 7507</span></li>
+        <li>• Ever Lopez Panti — <span class="mat">Matrícula: 7335</span></li>
+        <li>• Cristian Alejandro Hoil Reyes — <span class="mat">Matrícula: 7243</span></li>
+      </ul>
+    </div>
+    <div>
+      <h3>Datos Académicos</h3>
+      <ul>
+        <li><strong>Carrera:</strong> Ing. Sistemas Computacionales</li>
+        <li><strong>Docente:</strong> Emmanuel Andres Martinez Lopez</li>
+        <li><strong>Arquitectura:</strong> 5 Clases (.py) + 1 Main (.py)</li>
+        <li><strong>Fecha:</strong> Noviembre 2026</li>
+      </ul>
+    </div>
+  </div>
+</div>
+
+<!-- DIAPOSITIVA 2: PLANTEAMIENTO DEL PROBLEMA -->
+<div class="slide">
+  <div class="header">
+    <div>
+      <div class="phase">Contexto del Proyecto · Caso #8</div>
+      <h2>Planteamiento del Problema y Solución</h2>
+    </div>
+    <div class="num">01 / 08</div>
+  </div>
+
+  <div class="content">
+    <div class="two-col">
+      <div class="card">
+        <h3>Problemática en "Riviera Express"</h3>
+        <p><strong>"Riviera Express"</strong> es una empresa de envíos urbanos que transporta paquetes y documentos pequeños, pero presenta tres problemas operativos:</p>
+        <ul>
+          <li>Cálculo manual de tarifas según <strong>peso, volumen y distancia</strong>.</li>
+          <li>Riesgo de capturar <strong>pesos o medidas negativas</strong> que alteran los cobros.</li>
+          <li>Falta de control para <strong>agrupar varios paquetes en una hoja de ruta</strong> y asignar un <strong>repartidor responsable</strong>.</li>
+        </ul>
+      </div>
+      <div class="card">
+        <h3>Alcance de Nuestra Solución POO</h3>
+        <ul>
+          <li><strong>Herencia:</strong> Superclase <code>Envio</code> con subclases <code>Paquete</code> y <code>Documento</code>.</li>
+          <li><strong>Encapsulamiento:</strong> Protección contra números negativos usando <code>get/set</code> y <code>@property</code>.</li>
+          <li><strong>Sobrecarga de 4 Operadores:</strong> Uso directo de <code>+</code>, <code>-</code>, <code>*</code> y <code>/</code> entre objetos.</li>
+          <li><strong>Agrupación y Asignación:</strong> Clase <code>HojaRuta</code> vinculada a <code>Repartidor</code>.</li>
+          <li><strong>Ciclo de Vida y Limpieza:</strong> Constructores <code>__init__</code>, destructores <code>__del__</code>, sin comentarios ni excepciones.</li>
+        </ul>
+      </div>
+    </div>
+  </div>
+
+  <div class="footer">
+    <span>Sistema de Gestión de Envíos "Riviera Express"</span>
+    <span>Desarrollo y Programación Orientado a Objetos 27-1</span>
+  </div>
+</div>
+
+<!-- DIAPOSITIVA 3: FASE 1 REQUISITOS -->
+<div class="slide">
+  <div class="header">
+    <div>
+      <div class="phase">Fase 1 del Ciclo de Desarrollo</div>
+      <h2>Especificación de Requisitos (RF y RNF)</h2>
+    </div>
+    <div class="num">02 / 08</div>
+  </div>
+
+  <div class="content">
+    <table>
+      <thead>
+        <tr>
+          <th style="width: 10%;">Código</th>
+          <th style="width: 26%;">Requisito</th>
+          <th style="width: 34%;">Descripción</th>
+          <th style="width: 30%;">Aplicación en POO</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr>
+          <td><strong>RF-01</strong></td>
+          <td><strong>Registro de envíos</strong></td>
+          <td>Registrar paquetes (con volumen) y documentos (con urgencia).</td>
+          <td><strong>Herencia</strong> desde la clase padre <code>Envio</code>.</td>
+        </tr>
+        <tr>
+          <td><strong>RF-02</strong></td>
+          <td><strong>Validar medidas &gt; 0</strong></td>
+          <td>Impedir que se asignen pesos, distancias o volúmenes negativos.</td>
+          <td><strong>Encapsulamiento</strong> con <code>get/set</code> y <code>@property</code>.</td>
+        </tr>
+        <tr>
+          <td><strong>RF-03</strong></td>
+          <td><strong>Cálculo de costo</strong></td>
+          <td>Calcular tarifa según peso ($10/kg), distancia ($5/km) y volumen/urgencia.</td>
+          <td>Método <code>calcular_costo()</code> reutilizando <code>super()</code>.</td>
+        </tr>
+        <tr>
+          <td><strong>RF-04</strong></td>
+          <td><strong>Operar costos (+, -, *, /)</strong></td>
+          <td>Sumar, restar, multiplicar y dividir costos entre dos objetos de envío.</td>
+          <td><strong>Sobrecarga:</strong> <code>__add__</code>, <code>__sub__</code>, <code>__mul__</code>, <code>__truediv__</code>.</td>
+        </tr>
+        <tr>
+          <td><strong>RF-05 / 06</strong></td>
+          <td><strong>Hoja de Ruta y Repartidor</strong></td>
+          <td>Agrupar varios envíos en una ruta y asignarle un repartidor responsable.</td>
+          <td>Clases <code>HojaRuta</code> y <code>Repartidor</code> conectadas.</td>
+        </tr>
+        <tr>
+          <td><strong>RNF-01 / 04</strong></td>
+          <td><strong>Arquitectura y Restricciones</strong></td>
+          <td>5 clases en archivos individuales + <code>main.py</code>, sin comentarios ni excepciones.</td>
+          <td><code>1 Archivo = 1 Clase</code> (5 clases &ge; 4 integrantes).</td>
+        </tr>
+      </tbody>
+    </table>
+  </div>
+
+  <div class="footer">
+    <span>Fase 1: Requisitos Funcionales y No Funcionales</span>
+    <span>Riviera Express</span>
+  </div>
+</div>
+
+<!-- DIAPOSITIVA 4: FASE 2 ANÁLISIS -->
+<div class="slide">
+  <div class="header">
+    <div>
+      <div class="phase">Fase 2 del Ciclo de Desarrollo</div>
+      <h2>Análisis: Objetos Identificados y Casos de Uso</h2>
+    </div>
+    <div class="num">03 / 08</div>
+  </div>
+
+  <div class="content">
+    <div class="two-col" style="grid-template-columns: 0.95fr 1.05fr; align-items: center;">
+      <div class="card">
+        <h3>5 Clases Identificadas (&ge; 4 Integrantes)</h3>
+        <ul>
+          <li><strong>1. Envio (Superclase):</strong> Atributos <code>+codigo</code>, <code>-__peso</code>, <code>-__distancia</code>. Calcula costo base y sobrecarga <code>+</code>, <code>-</code>, <code>*</code>, <code>/</code>.</li>
+          <li><strong>2. Paquete (Subclase):</strong> Hereda de <code>Envio</code>, encapsula <code>-__volumen</code> con <code>@property</code> y suma $20 por volumen.</li>
+          <li><strong>3. Documento (Subclase):</strong> Hereda de <code>Envio</code>, añade <code>+urgente</code> y suma $30 si es urgente.</li>
+          <li><strong>4. Repartidor:</strong> Guarda <code>+nombre</code>, <code>+vehiculo</code> y encapsula <code>-__id_repartidor</code> con <code>get/set</code>.</li>
+          <li><strong>5. HojaRuta:</strong> Agrupa la lista <code>-__envios</code> y asigna al <code>-__repartidor</code> mediante <code>@property</code>.</li>
+        </ul>
+      </div>
+      <div class="center-img">
+        <img src="casos_uso.png" alt="Diagrama de Casos de Uso">
+      </div>
+    </div>
+  </div>
+
+  <div class="footer">
+    <span>Fase 2: Análisis Orientado a Objetos</span>
+    <span>Riviera Express</span>
+  </div>
+</div>
+
+<!-- DIAPOSITIVA 5: FASE 3 DISEÑO -->
+<div class="slide">
+  <div class="header">
+    <div>
+      <div class="phase">Fase 3 del Ciclo de Desarrollo</div>
+      <h2>Diseño: Diagrama de Clases UML (+ Público / - Privado)</h2>
+    </div>
+    <div class="num">04 / 08</div>
+  </div>
+
+  <div class="content center-img">
+    <img src="diagrama_clases.png" alt="Diagrama de Clases UML">
+  </div>
+
+  <div class="footer">
+    <span>Fase 3: Diseño UML con Visibilidad (+ / -), Herencia y Asociación</span>
+    <span>Riviera Express</span>
+  </div>
+</div>
+
+<!-- DIAPOSITIVA 6: ENCAPSULAMIENTO Y HERENCIA EN CÓDIGO -->
+<div class="slide">
+  <div class="header">
+    <div>
+      <div class="phase">Fase 4: Implementación en Python</div>
+      <h2>Herencia, Constructores/Destructores y Encapsulamiento</h2>
+    </div>
+    <div class="num">05 / 08</div>
+  </div>
+
+  <div class="content">
+    <div class="two-col">
+      <div>
+        <div class="card" style="padding: 16px 20px;">
+          <h3>1. Superclase Envio.py (get y set)</h3>
+          <pre>class Envio:
+    def __init__(self, codigo, peso, distancia):
+        self.codigo = codigo
+        self.__peso = peso
+        self.__distancia = distancia
+
+    def __del__(self):
+        print(f"Envío {self.codigo} eliminado")
+
+    def get_peso(self):
+        return self.__peso
+
+    def set_peso(self, nuevo_peso):
+        if nuevo_peso &gt; 0:
+            self.__peso = nuevo_peso
+        else:
+            print("El peso no puede ser negativo")</pre>
+        </div>
+      </div>
+      <div>
+        <div class="card" style="padding: 16px 20px;">
+          <h3>2. Subclase Paquete.py (Herencia y @property)</h3>
+          <pre>from Envio import Envio
+
+class Paquete(Envio):
+    def __init__(self, codigo, peso, distancia, volumen):
+        super().__init__(codigo, peso, distancia)
+        self.__volumen = volumen
+
+    def __del__(self):
+        print(f"Paquete {self.codigo} eliminado")
+
+    @property
+    def volumen(self):
+        return self.__volumen
+
+    @volumen.setter
+    def volumen(self, nuevo_volumen):
+        if nuevo_volumen &gt; 0:
+            self.__volumen = nuevo_volumen
+        else:
+            print("El volumen no puede ser negativo")</pre>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <div class="footer">
+    <span>Fase 4: Implementación — Encapsulamiento (get/set + 2 @property) y Herencia con super()</span>
+    <span>Riviera Express</span>
+  </div>
+</div>
+
+<!-- DIAPOSITIVA 7: SOBRECARGA Y HOJA DE RUTA -->
+<div class="slide">
+  <div class="header">
+    <div>
+      <div class="phase">Fase 4: Implementación en Python</div>
+      <h2>Sobrecarga de 4 Operadores (+, -, *, /) y Hoja de Ruta</h2>
+    </div>
+    <div class="num">06 / 08</div>
+  </div>
+
+  <div class="content">
+    <div class="two-col">
+      <div class="card" style="padding: 16px 20px;">
+        <h3>Sobrecarga en Envio.py (+, -, *, /)</h3>
+        <pre>    def calcular_costo(self):
+        return (self.__peso * 10) + (self.__distancia * 5)
+
+    def __add__(self, otro_envio):
+        return self.calcular_costo() + otro_envio.calcular_costo()
+
+    def __sub__(self, otro_envio):
+        return self.calcular_costo() - otro_envio.calcular_costo()
+
+    def __mul__(self, otro_envio):
+        return self.calcular_costo() * otro_envio.calcular_costo()
+
+    def __truediv__(self, otro_envio):
+        return self.calcular_costo() / otro_envio.calcular_costo()</pre>
+      </div>
+      <div class="card" style="padding: 16px 20px;">
+        <h3>Agrupación en HojaRuta.py (@property)</h3>
+        <pre>class HojaRuta:
+    def __init__(self, folio, zona):
+        self.folio = folio
+        self.zona = zona
+        self.__repartidor = None
+        self.__envios = []
+
+    @property
+    def repartidor(self):
+        return self.__repartidor
+
+    @repartidor.setter
+    def repartidor(self, nuevo_repartidor):
+        self.__repartidor = nuevo_repartidor
+
+    def agregar_envio(self, envio):
+        self.__envios.append(envio)</pre>
+      </div>
+    </div>
+  </div>
+
+  <div class="footer">
+    <span>Fase 4: Implementación — Métodos Mágicos y Agrupación de Paquetes</span>
+    <span>Riviera Express</span>
+  </div>
+</div>
+
+<!-- DIAPOSITIVA 8: EVIDENCIAS Y RESULTADOS -->
+<div class="slide">
+  <div class="header">
+    <div>
+      <div class="phase">Fase 4: Pruebas y Validación en Consola</div>
+      <h2>Estructura Modular (1 Archivo = 1 Clase) y Ejecución de main.py</h2>
+    </div>
+    <div class="num">07 / 08</div>
+  </div>
+
+  <div class="content">
+    <div class="two-col" style="grid-template-columns: 0.7fr 1.3fr; align-items: center;">
+      <div class="card" style="text-align: center;">
+        <h3>Estructura del Proyecto</h3>
+        <img src="image.png" alt="Archivos del proyecto" style="max-height: 4.5in; border-radius: 8px; border: 1px solid #cbd5e1;">
+      </div>
+      <div class="card" style="text-align: center;">
+        <h3>Ejecución Limpia de main.py en Consola</h3>
+        <img src="captura_ejecucion.png" alt="Ejecución en consola" style="max-width: 100%; max-height: 4.5in; border-radius: 8px;">
+      </div>
+    </div>
+  </div>
+
+  <div class="footer">
+    <span>Fase 4: Evidencias de Ejecución — ¡Gracias por su atención!</span>
+    <span>Equipo Riviera Express · TUP</span>
+  </div>
+</div>
+
+</body>
+</html>

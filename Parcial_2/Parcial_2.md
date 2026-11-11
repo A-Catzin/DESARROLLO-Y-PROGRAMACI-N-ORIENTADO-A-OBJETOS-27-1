@@ -1,6 +1,7 @@
 # Parcial 2 · Desarrollo y programación orientado a objetos
 
 ## Actividades
+- [Guía de Estudio Completa (Parcial 2 y Proyecto)](<Guia_Estudio_Parcial_2.md>)
 - [Análisis de reservaciones de hotel](<Analisis_Reservaciones_Hotel.md>)
 - [Especificación de requisitos](<Especificación de Requisitos.md>)
 - [Cajero Automático (Constructor, Destructor y Encapsulamiento)](<Cajero_Automatico.md>)
