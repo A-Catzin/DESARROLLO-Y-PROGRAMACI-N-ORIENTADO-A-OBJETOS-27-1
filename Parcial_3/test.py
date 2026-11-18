@@ -1,0 +1,9 @@
+while True:                                                                                                                                                                                                   
+        try:                                                                                                                                                                                                      
+            numero1 = int(input("\nIngrese el primer número: "))                                                                                                                                                  
+            numero2 = int(input("\nIngrese el segundo número: "))                                                                                                                                                 
+            suma = numero1 + numero2                                                                                                                                                                              
+            print(f"La suma de {numero1} + {numero2} es: {suma}")                                                                                                                                                 
+            break                                                                                                                                                                                                 
+        except ValueError:                                                                                                                                                                                        
+            print("Error: Por favor, ingrese un número válido.")
