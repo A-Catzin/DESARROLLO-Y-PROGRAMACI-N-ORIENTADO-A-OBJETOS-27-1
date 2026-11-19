@@ -1,9 +1,9 @@
-from Parcial_3.Vehiculo.class_vehiculo import Vehiculo
-
+from class_vehiculo import vehiculo
+#Angel Ricardo Teh Catzin
 
 while True:
     try:
-        auto1 = Vehiculo("Chevy pop", 150)
+        auto1 = vehiculo("Chevy pop", 150)
         print(f"La tarifa actual del vehiculo es: {auto1.tarifa}")
 
 

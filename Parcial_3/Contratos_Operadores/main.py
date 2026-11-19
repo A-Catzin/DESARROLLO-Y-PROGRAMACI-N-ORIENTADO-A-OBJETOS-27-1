@@ -1,4 +1,5 @@
 from ContratoRenta import ContratoRenta
+#Angel Ricardo Teh Catzin
 
 # --- 1. SUMA Y RESTA ---
 contrato_1 = ContratoRenta(101, 1500)

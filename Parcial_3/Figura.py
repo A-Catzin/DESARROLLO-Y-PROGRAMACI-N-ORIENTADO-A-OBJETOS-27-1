@@ -1,3 +1,4 @@
+#Angel Ricardo Teh Catzin
 class figura:
     def __init__(self, base, altura):
         self.base = base

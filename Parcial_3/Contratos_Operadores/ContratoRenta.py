@@ -26,7 +26,7 @@ class ContratoRenta:
     # División (/)
     def __truediv__(self, otro_contrato):
         if otro_contrato.total == 0:
-            raise ZeroDivisionError("No se puede dividir entre un contrato con total en 0.")
+            raise ZeroDivisionError("No se puede dividir entre 0.")
         return self.total / otro_contrato.total
 
     # Destructor
